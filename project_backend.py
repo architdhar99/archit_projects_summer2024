@@ -68,7 +68,7 @@ logger = logging.getLogger(__name__)
 nltk.download('punkt')
 
 # Initialize the Flask app
-app = Flask(__name__, template_folder='/content/drive/MyDrive/ai_projects/templates')
+app = Flask(__name__, template_folder='[INSERT HERE]')
 
 # Global variables
 LAST_CREATED_FILE = None
@@ -91,7 +91,7 @@ from google.colab import drive
 drive.mount('/content/drive', force_remount=True)
 
 # Specify the path to your JSON file for Google Cloud credentials
-key_file_name = "video-translate-project-428201-f1c1f2fada92.json"
+key_file_name = "[INSERT HERE].json"
 key_file_path = os.path.join("/content/drive/My Drive/ai_projects", key_file_name)
 
 # Verify the file exists

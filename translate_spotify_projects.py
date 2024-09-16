@@ -76,7 +76,7 @@ TASK_STATUS = {}
 
 # Ngrok setup
 ngrok.kill()
-!ngrok authtoken 2jJ5j8UFrh5qSzSMwzC9QaetGko_7bxnnRCusjt8mTRaUH4Jd
+!ngrok authtoken [INSERT HERE]
 public_url = ngrok.connect(5000)
 print(f"Public URL: {public_url}")
 
@@ -84,7 +84,7 @@ print(f"Public URL: {public_url}")
 torch.hub.set_dir("./torch_hub")
 
 # Set the environment variable with your Hugging Face token
-os.environ["HUGGINGFACE_TOKEN"] = "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"
+os.environ["HUGGINGFACE_TOKEN"] = "INSERT HERE"
 
 # Mount Google Drive if not already mounted
 from google.colab import drive
@@ -321,8 +321,8 @@ def download_file(filename):
         abort(404)
 
 # Set up Spotify API
-client_id = '8bd896483db74878b647b9f215def114'
-client_secret = 'da1dbe2638ab4c8985146aa63aa836b8'
+client_id = 'INSERT HERE'
+client_secret = 'INSERT HERE'
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
 
 # Global variable to store Spotify download tasks

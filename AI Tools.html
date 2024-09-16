@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://f7f2-104-198-138-93.ngrok-free.app/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools</title>
+    <style>
+        .tab {
+            display: none;
+        }
+
+        .tab-button {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: none;
+            margin-right: 5px;
+        }
+
+        .tab-button.active {
+            background-color: #ccc;
+        }
+    </style>
+
+<script>
+    // Set a custom User-Agent for XMLHttpRequest
+    var originalXHROpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function() {
+        originalXHROpen.apply(this, arguments);
+        this.setRequestHeader('User-Agent', 'CustomAgent/1.0');
+    };
+
+    // Set a custom User-Agent for fetch requests
+    var originalFetch = window.fetch;
+    window.fetch = function() {
+        var args = Array.prototype.slice.call(arguments);
+        if (args[1] && args[1].headers) {
+            args[1].headers['User-Agent'] = 'CustomAgent/1.0';
+        } else if (args[1]) {
+            args[1].headers = { 'User-Agent': 'CustomAgent/1.0' };
+        } else {
+            args.push({ headers: { 'User-Agent': 'CustomAgent/1.0' } });
+        }
+        return originalFetch.apply(this, args);
+    };
+    </script>
+    
+</head>
+
+<body>
+    <h1>Side Projects by Archit Dhar</h1>
+
+    <div class="tab-buttons">
+        <button class="tab-button" onclick="openTab(event, &#39;translationTool&#39;)">Translation Tool</button>
+        <button class="tab-button active" onclick="openTab(event, &#39;spotifyTool&#39;)">Spotify to MP3</button>
+    </div>
+
+    <div id="translationTool" class="tab" style="display: none;">
+        <h2>YouTube Speech to Transliterated MP3</h2>
+        <form id="translationForm">
+            <label for="video_url">YouTube Video URL:</label>
+            <input type="text" id="video_url" name="video_url" required=""><br><br>
+        
+            <label for="voice">Select Voice:</label>
+            <select id="voice" name="voice" required="">
+                <option value="af-ZA-Standard-A">Afrikaans (South Africa) - FEMALE</option>
+                <option value="ar-XA-Standard-A">Arabic - FEMALE</option>
+                <option value="ar-XA-Standard-B">Arabic - MALE</option>
+                <option value="eu-ES-Standard-A">Basque (Spain) - FEMALE</option>
+                <option value="bn-IN-Standard-A">Bengali (India) - FEMALE</option>
+                <option value="bn-IN-Standard-B">Bengali (India) - MALE</option>
+                <option value="bg-BG-Standard-A">Bulgarian (Bulgaria) - FEMALE</option>
+                <option value="ca-ES-Standard-A">Catalan (Spain) - FEMALE</option>
+                <option value="yue-HK-Standard-A">Chinese (Hong Kong) - FEMALE</option>
+                <option value="yue-HK-Standard-B">Chinese (Hong Kong) - MALE</option>
+                <option value="cs-CZ-Standard-A">Czech (Czech Republic) - FEMALE</option>
+                <option value="da-DK-Standard-A">Danish (Denmark) - FEMALE</option>
+                <option value="nl-BE-Standard-A">Dutch (Belgium) - FEMALE</option>
+                <option value="nl-BE-Standard-B">Dutch (Belgium) - MALE</option>
+                <option value="nl-NL-Standard-A">Dutch (Netherlands) - FEMALE</option>
+                <option value="nl-NL-Standard-B">Dutch (Netherlands) - MALE</option>
+                <option value="en-AU-Standard-A">English (Australia) - FEMALE</option>
+                <option value="en-AU-Standard-B">English (Australia) - MALE</option>
+                <option value="en-IN-Standard-A">English (India) - FEMALE</option>
+                <option value="en-IN-Standard-B">English (India) - MALE</option>
+                <option value="en-GB-Standard-A">English (UK) - FEMALE</option>
+                <option value="en-GB-Standard-B">English (UK) - MALE</option>
+                <option value="en-US-Standard-A">English (US) - MALE</option>
+                <option value="en-US-Standard-B">English (US) - MALE</option>
+                <option value="fil-PH-Standard-A">Filipino (Philippines) - FEMALE</option>
+                <option value="fil-PH-Standard-B">Filipino (Philippines) - FEMALE</option>
+                <option value="fi-FI-Standard-A">Finnish (Finland) - FEMALE</option>
+                <option value="fr-CA-Standard-A">French (Canada) - FEMALE</option>
+                <option value="fr-CA-Standard-B">French (Canada) - MALE</option>
+                <option value="fr-FR-Standard-A">French (France) - FEMALE</option>
+                <option value="fr-FR-Standard-B">French (France) - MALE</option>
+                <option value="gl-ES-Standard-A">Galician (Spain) - FEMALE</option>
+                <option value="de-DE-Standard-A">German (Germany) - FEMALE</option>
+                <option value="de-DE-Standard-B">German (Germany) - MALE</option>
+                <option value="el-GR-Standard-A">Greek (Greece) - FEMALE</option>
+                <option value="gu-IN-Standard-A">Gujarati (India) - FEMALE</option>
+                <option value="gu-IN-Standard-B">Gujarati (India) - MALE</option>
+                <option value="he-IL-Standard-A">Hebrew (Israel) - FEMALE</option>
+                <option value="he-IL-Standard-B">Hebrew (Israel) - MALE</option>
+                <option value="hi-IN-Standard-A">Hindi (India) - FEMALE</option>
+                <option value="hi-IN-Standard-B">Hindi (India) - MALE</option>
+                <option value="hu-HU-Standard-A">Hungarian (Hungary) - FEMALE</option>
+                <option value="is-IS-Standard-A">Icelandic (Iceland) - FEMALE</option>
+                <option value="id-ID-Standard-A">Indonesian (Indonesia) - FEMALE</option>
+                <option value="id-ID-Standard-B">Indonesian (Indonesia) - MALE</option>
+                <option value="it-IT-Standard-A">Italian (Italy) - FEMALE</option>
+                <option value="it-IT-Standard-B">Italian (Italy) - FEMALE</option>
+                <option value="ja-JP-Standard-A">Japanese (Japan) - FEMALE</option>
+                <option value="ja-JP-Standard-B">Japanese (Japan) - FEMALE</option>
+                <option value="kn-IN-Standard-A">Kannada (India) - FEMALE</option>
+                <option value="kn-IN-Standard-B">Kannada (India) - MALE</option>
+                <option value="ko-KR-Standard-A">Korean (South Korea) - FEMALE</option>
+                <option value="ko-KR-Standard-B">Korean (South Korea) - FEMALE</option>
+                <option value="lv-LV-Standard-A">Latvian (Latvia) - MALE</option>
+                <option value="lt-LT-Standard-A">Lithuanian (Lithuania) - MALE</option>
+                <option value="ms-MY-Standard-A">Malay (Malaysia) - FEMALE</option>
+                <option value="ms-MY-Standard-B">Malay (Malaysia) - MALE</option>
+                <option value="ml-IN-Standard-A">Malayalam (India) - FEMALE</option>
+                <option value="ml-IN-Standard-B">Malayalam (India) - MALE</option>
+                <option value="cmn-CN-Standard-A">Mandarin Chinese - FEMALE</option>
+                <option value="cmn-TW-Standard-A">Mandarin Chinese - FEMALE</option>
+                <option value="cmn-CN-Standard-B">Mandarin Chinese - MALE</option>
+                <option value="cmn-TW-Standard-B">Mandarin Chinese - MALE</option>
+                <option value="mr-IN-Standard-A">Marathi (India) - FEMALE</option>
+                <option value="mr-IN-Standard-B">Marathi (India) - MALE</option>
+                <option value="nb-NO-Standard-A">Norwegian (Norway) - FEMALE</option>
+                <option value="nb-NO-Standard-B">Norwegian (Norway) - MALE</option>
+                <option value="pl-PL-Standard-A">Polish (Poland) - FEMALE</option>
+                <option value="pl-PL-Standard-B">Polish (Poland) - MALE</option>
+                <option value="pt-BR-Standard-A">Portuguese (Brazil) - FEMALE</option>
+                <option value="pt-BR-Standard-B">Portuguese (Brazil) - MALE</option>
+                <option value="pt-PT-Standard-A">Portuguese (Portugal) - FEMALE</option>
+                <option value="pt-PT-Standard-B">Portuguese (Portugal) - MALE</option>
+                <option value="pa-IN-Standard-A">Punjabi (India) - FEMALE</option>
+                <option value="pa-IN-Standard-B">Punjabi (India) - MALE</option>
+                <option value="ro-RO-Standard-A">Romanian (Romania) - FEMALE</option>
+                <option value="ru-RU-Standard-A">Russian (Russia) - FEMALE</option>
+                <option value="ru-RU-Standard-B">Russian (Russia) - MALE</option>
+                <option value="sr-RS-Standard-A">Serbian (Cyrillic) - FEMALE</option>
+                <option value="sk-SK-Standard-A">Slovak (Slovakia) - FEMALE</option>
+                <option value="es-ES-Standard-A">Spanish (Spain) - FEMALE</option>
+                <option value="es-ES-Standard-B">Spanish (Spain) - MALE</option>
+                <option value="es-US-Standard-A">Spanish (US) - FEMALE</option>
+                <option value="es-US-Standard-B">Spanish (US) - MALE</option>
+                <option value="sv-SE-Standard-A">Swedish (Sweden) - FEMALE</option>
+                <option value="sv-SE-Standard-B">Swedish (Sweden) - FEMALE</option>
+                <option value="ta-IN-Standard-A">Tamil (India) - FEMALE</option>
+                <option value="ta-IN-Standard-B">Tamil (India) - MALE</option>
+                <option value="te-IN-Standard-A">Telugu (India) - FEMALE</option>
+                <option value="te-IN-Standard-B">Telugu (India) - MALE</option>
+                <option value="th-TH-Standard-A">Thai (Thailand) - FEMALE</option>
+                <option value="tr-TR-Standard-A">Turkish (Turkey) - FEMALE</option>
+                <option value="tr-TR-Standard-B">Turkish (Turkey) - MALE</option>
+                <option value="uk-UA-Standard-A">Ukrainian (Ukraine) - FEMALE</option>
+                <option value="vi-VN-Standard-A">Vietnamese (Vietnam) - FEMALE</option>
+                <option value="vi-VN-Standard-B">Vietnamese (Vietnam) - MALE</option>
+            </select><br><br>
+            <button type="submit">Translate</button>
+        </form>
+        <div id="translationResult">Translation completed!<a href="https://f7f2-104-198-138-93.ngrok-free.app/download/translated_audio_20240916011630.mp3">Download Translated MP3</a></div>
+    </div>
+
+    <div id="spotifyTool" class="tab" style="display: block;">
+        <h2>Spotify to MP3</h2>
+        <form id="spotifyForm">
+            <label for="playlist_url">Spotify Playlist or Track URLs (one per line):</label><br>
+            <textarea id="playlist_url" name="playlist_url" rows="5" cols="50" required=""></textarea><br><br>
+            <button type="submit">Download MP3s</button>
+        </form>
+        <div id="spotifyResult">Download complete! <a href="https://f7f2-104-198-138-93.ngrok-free.app/spotify/download/dee9c12f-aa5d-402d-9c20-8de27afd0006">Download ZIP</a></div>
+    </div>
+
+<script>
+    function openTab(evt, tabName) {
+        var tabs = document.getElementsByClassName('tab');
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].style.display = 'none';
+        }
+
+        var buttons = document.getElementsByClassName('tab-button');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].className = buttons[i].className.replace(' active', '');
+        }
+
+        document.getElementById(tabName).style.display = 'block';
+        evt.currentTarget.className += ' active';
+    }
+
+    document.getElementById('translationForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const videoUrl = document.getElementById('video_url').value;
+        const voice = document.getElementById('voice').value;
+        const resultDiv = document.getElementById('translationResult');
+
+        resultDiv.innerHTML = 'Processing...';
+
+        fetch('/translate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ video_url: videoUrl, voice: voice }),
+        })
+        .then(response => {
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers);
+            return response.text().then(text => {
+                console.log('Raw response:', text);
+                try {
+                    return JSON.parse(text);
+                } catch (e) {
+                    console.error('Error parsing JSON:', e);
+                    throw new Error('Invalid JSON response from server');
+                }
+            });
+        })
+        .then(data => {
+            console.log('Parsed data:', data);
+            if (data.task_id) {
+                checkTranslationStatus(data.task_id);
+            } else {
+                throw new Error('No task ID received from server');
+            }
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            resultDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+        });
+    });
+
+    function checkTranslationStatus(taskId) {
+        const resultDiv = document.getElementById('translationResult');
+
+        function pollStatus() {
+            fetch(`/status/${taskId}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Status update:', data);
+                if (data.state === 'PENDING' || data.state === 'PROGRESS') {
+                    resultDiv.innerHTML = `${data.status} (${data.current}/${data.total})`;
+                    setTimeout(pollStatus, 2000);  // Poll every 2 seconds
+                } else if (data.state === 'SUCCESS') {
+                    resultDiv.innerHTML = 'Translation completed!';
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = `/download/${data.result}`;
+                    downloadLink.textContent = 'Download Translated MP3';
+                    resultDiv.appendChild(downloadLink);
+                } else if (data.state === 'FAILURE') {
+                    resultDiv.innerHTML = `Error: ${data.status}`;
+                } else {
+                    resultDiv.innerHTML = `Unknown state: ${data.state}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error checking status:', error);
+                resultDiv.innerHTML = `Error checking status: ${error.message}`;
+            });
+        }
+
+        pollStatus();
+    }
+
+    document.getElementById('spotifyForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const playlistUrl = document.getElementById('playlist_url').value;
+        const resultDiv = document.getElementById('spotifyResult');
+
+        resultDiv.innerHTML = 'Starting download...';
+
+        fetch('/spotify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ playlist_url: playlistUrl }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.task_id) {
+                checkSpotifyStatus(data.task_id);
+            } else {
+                throw new Error('No task ID received from server');
+            }
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            resultDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+        });
+    });
+
+    function checkSpotifyStatus(taskId) {
+        const resultDiv = document.getElementById('spotifyResult');
+
+        function pollStatus() {
+            fetch(`/spotify/status/${taskId}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Status update:', data);
+                if (data.state === 'PROGRESS') {
+                    resultDiv.innerHTML = data.status;
+                    setTimeout(pollStatus, 2000);  // Poll every 2 seconds
+                } else if (data.state === 'SUCCESS') {
+                    resultDiv.innerHTML = 'Download complete! <a href="/spotify/download/' + taskId + '">Download ZIP</a>';
+                } else if (data.state === 'FAILURE') {
+                    resultDiv.innerHTML = `Error: ${data.status}`;
+                } else {
+                    resultDiv.innerHTML = `Unknown state: ${data.state}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error checking status:', error);
+                resultDiv.innerHTML = `Error checking status: ${error.message}`;
+            });
+        }
+
+        pollStatus();
+    }
+</script>
+
+</body></html>
